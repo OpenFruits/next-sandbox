@@ -1,3 +1,20 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {},
+  "parserOptions": {},
+  "plugins": [],
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "rules": {
+    // "semi": "error",
+    // "quotes": ["error", "double"],
+    "no-undef": "error"
+  },
+  "settings": {
+    "react": {}
+  }
 }
