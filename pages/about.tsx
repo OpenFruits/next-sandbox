@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Footer } from "../src/components/Footer";
+import { Headine } from "../src/components/Headline";
 import { Links } from "../src/components/Links";
 import styles from "../styles/Home.module.css";
 
@@ -14,12 +15,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>About Page</h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/about.js</code>
-        </p>
+        <Headine page="about" />
 
         <Links />
       </main>
