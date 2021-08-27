@@ -12,7 +12,15 @@
   "rules": {
     // "semi": "error",
     // "quotes": ["error", "double"],
-    "no-undef": "error"
+    "no-undef": "error",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ]
   },
   "settings": {
     "react": {}
