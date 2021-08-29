@@ -1,17 +1,26 @@
 import { VFC } from "react";
 import { Headine } from "./Headline";
 import { Links } from "./Links";
-import styles from "../../styles/Home.module.css";
+import styled from "styled-components";
 
 type Props = {
   page: string;
 };
 
 export const Main: VFC<Props> = (props) => {
+  const Main = styled.main`
+    padding: 5rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `;
+
   return (
-    <main className={styles.main}>
+    <Main>
       <Headine page={props.page} />
       <Links />
-    </main>
+    </Main>
   );
 };
