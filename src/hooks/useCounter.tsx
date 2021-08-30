@@ -1,6 +1,13 @@
 import { useState, useCallback } from "react";
 
-export const useCounter = () => {
+export type Counter = {
+  count: number;
+  isShow: boolean;
+  handleClick: () => void;
+  handleDisplay: () => void;
+};
+
+export const useCounter = (): Counter => {
   const [count, setCount] = useState(1);
   const [isShow, setIsShow] = useState(true);
 

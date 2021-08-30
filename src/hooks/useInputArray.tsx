@@ -1,6 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { useState, useCallback } from "react";
 
-export const useInputArray = () => {
+export type InputArray = {
+  text: string;
+  array: string[];
+  handleChange: (e: any) => void;
+  handleAdd: () => void;
+};
+
+export const useInputArray = (): InputArray => {
   const [text, setText] = useState("");
   const [array, setArray] = useState<string[]>([]);
 

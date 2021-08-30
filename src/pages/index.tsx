@@ -3,10 +3,9 @@ import Head from "next/head";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
-import { useCounter } from "src/hooks/useCounter";
-import { useInputArray } from "src/hooks/useInputArray";
 import { useBgLightBlue } from "src/hooks/useBgLightBlue";
 import styled from "styled-components";
+import { PageProps } from "src/types/page";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -17,9 +16,17 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Home: NextPage = () => {
-  const { count, isShow, handleClick, handleDisplay } = useCounter();
-  const { text, array, handleChange, handleAdd } = useInputArray();
+const Home: NextPage<PageProps> = (props) => {
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleChange,
+    handleAdd,
+  } = props;
   useBgLightBlue();
 
   return (
