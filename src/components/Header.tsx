@@ -24,15 +24,19 @@ const Anchor = styled.a`
   }
 `;
 
+const NAV_ITEMS = [
+  { href: "/", label: "Index" },
+  { href: "/about", label: "About" },
+];
+
 export const Header: VFC = () => {
   return (
     <HeaderComponent>
-      <Link href="/">
-        <Anchor>Index</Anchor>
-      </Link>
-      <Link href="/about">
-        <Anchor>About</Anchor>
-      </Link>
+      {NAV_ITEMS.map((item) => (
+        <Link key={item.href} href={item.href}>
+          <Anchor>{item.label}</Anchor>
+        </Link>
+      ))}
     </HeaderComponent>
   );
 };

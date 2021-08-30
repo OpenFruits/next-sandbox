@@ -25,7 +25,7 @@ export const useInputArray = (): InputArray => {
       alert("入力してください");
       return;
     }
-    if (array.some((item) => item === text)) {
+    if (array.includes(text)) {
       alert("同じ要素が既に存在しています");
       return;
     }
