@@ -7,20 +7,20 @@ type Props = {
   page: string;
 };
 
-export const Main: VFC<Props> = (props) => {
-  const Main = styled.main`
-    padding: 5rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  `;
+const Container = styled.main`
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
+export const Main: VFC<Props> = (props) => {
   return (
-    <Main>
+    <Container>
       <Headine page={props.page} />
       <Links />
-    </Main>
+    </Container>
   );
 };
