@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const About: NextPage<PageProps> = (props) => {
   const {
-    count,
+    doubleCount,
     isShow,
     handleClick,
     handleDisplay,
@@ -35,7 +35,7 @@ const About: NextPage<PageProps> = (props) => {
 
       <Header />
 
-      {isShow && <h1>{count}</h1>}
+      {isShow && <h1>{doubleCount}</h1>}
       {isShow && <button onClick={handleClick}>カウントアップ</button>}
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
       <input type="text" value={text} onChange={handleChange} />
