@@ -16,7 +16,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Home: NextPage = () => {
+const About: NextPage = () => {
   const { count, isShow, handleClick, handleDisplay } = useCounter();
   const { text, array, handleChange, handleAdd } = useInputArray();
 
@@ -45,4 +45,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default About;
