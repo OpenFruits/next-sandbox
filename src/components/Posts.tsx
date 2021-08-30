@@ -8,9 +8,15 @@ type Post = {
 };
 
 export const Posts: VFC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error>();
+  const [state, setState] = useState<{
+    data: Post[];
+    loading: boolean;
+    error: Error | null;
+  }>({
+    data: [],
+    loading: true,
+    error: null,
+  });
 
   const getPosts = useCallback(async () => {
     try {
@@ -19,27 +25,38 @@ export const Posts: VFC = () => {
         throw new Error("エラーが発生したため、データの取得に失敗しました。");
       }
       const json = await res.json();
-      setPosts(json);
+      setState((prevState) => {
+        return {
+          ...prevState,
+          data: json,
+          loading: false,
+        };
+      });
     } catch (error) {
-      setError(error);
+      setState((prevState) => {
+        return {
+          ...prevState,
+          loading: false,
+          error,
+        };
+      });
     }
-    setLoading(false);
   }, []);
 
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
-  if (loading) return <div>ローディング中</div>;
+  if (state.loading) return <div>ローディング中</div>;
 
-  if (error) return <div>{error.message}</div>;
+  if (state.error) return <div>{state.error?.message}</div>;
 
-  if (posts.length === 0) return <div>データが空です</div>;
+  if (state.data.length === 0) return <div>データが空です</div>;
 
   return (
     <div>
       <ol>
-        {posts.map((post) => (
+        {state.data.map((post) => (
           <li key={post.id}>{post.title}</li>
         ))}
       </ol>
