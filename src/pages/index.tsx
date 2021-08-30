@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
@@ -15,6 +16,25 @@ const Container = styled.div`
 `;
 
 const Home: NextPage = () => {
+  const [count, setCount] = useState(1);
+
+  const handleClick = useCallback(() => {
+    if (count < 10) {
+      setCount((prevCount) => prevCount + 1);
+    }
+  }, [count]);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "lightblue";
+    console.log(`マウント時: ${count}`);
+
+    return () => {
+      // cleanup function：初回マウント以降、先に呼ばれる
+      document.body.style.backgroundColor = "";
+      console.log(`アンマウント時: ${count}`);
+    };
+  }, [count]);
+
   return (
     <Container>
       <Head>
@@ -23,6 +43,8 @@ const Home: NextPage = () => {
 
       <Header />
 
+      <h1>{count}</h1>
+      <button onClick={handleClick}>ボタン</button>
       <Main page="index" />
 
       <Footer />
