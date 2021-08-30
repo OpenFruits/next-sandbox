@@ -1,6 +1,6 @@
 import { VFC } from "react";
-import { Headine } from "./Headline";
-import { Links } from "./Links";
+import { Headine } from "src/components/Headline";
+import { Links } from "src/components/Links";
 import styled from "styled-components";
 
 type Props = {
