@@ -1,12 +1,6 @@
 import { VFC } from "react";
 import { usePosts } from "src/hooks/usePosts";
-
-type Post = {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-};
+import Link from "next/link";
 
 export const Posts: VFC = () => {
   const { data, error, isLoading, isEmpty } = usePosts();
@@ -20,8 +14,12 @@ export const Posts: VFC = () => {
   return (
     <div>
       <ol>
-        {data.map((post: Post) => (
-          <li key={post.id}>{post.title}</li>
+        {data?.map((post) => (
+          <li key={post.id}>
+            <Link href={`/post/${post.id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
         ))}
       </ol>
     </div>
