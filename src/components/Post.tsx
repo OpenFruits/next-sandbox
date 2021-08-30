@@ -1,6 +1,16 @@
 import { VFC } from "react";
 import Head from "next/head";
 import { usePost } from "src/hooks/usePost";
+import styled from "styled-components";
+
+const Article = styled.div`
+  minheight: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Post: VFC = () => {
   const { user, post, error, isLoading } = usePost();
@@ -14,11 +24,11 @@ export const Post: VFC = () => {
       <Head>
         <title>{post?.title}</title>
       </Head>
-      <div>
+      <Article>
         <h1>{post?.title}</h1>
         <p>{post?.body}</p>
         {user?.name ? <div>Created by {user.name}</div> : null}
-      </div>
+      </Article>
     </div>
   );
 };
