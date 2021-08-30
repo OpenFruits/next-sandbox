@@ -27,7 +27,7 @@ const Anchor = styled.a`
 const NAV_ITEMS = [
   { href: "/", label: "Index" },
   { href: "/about", label: "About" },
-  { href: "/advance", label: "Advance" },
+  { href: "/posts", label: "Posts" },
 ];
 
 export const Header: VFC = () => {

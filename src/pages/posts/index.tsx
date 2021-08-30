@@ -9,11 +9,11 @@ const Container = styled.div`
   padding: 0 0.5rem;
 `;
 
-const Home: NextPage = () => {
+const PostsIndex: NextPage = () => {
   return (
     <Container>
       <Head>
-        <title>Index Page</title>
+        <title>Posts Page</title>
       </Head>
       <Header />
       <Posts />
@@ -21,4 +21,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default PostsIndex;

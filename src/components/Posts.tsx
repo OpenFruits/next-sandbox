@@ -16,7 +16,7 @@ export const Posts: VFC = () => {
       <ol>
         {data?.map((post) => (
           <li key={post.id}>
-            <Link href={`/post/${post.id}`}>
+            <Link href={`/posts/${post.id}`}>
               <a>{post.title}</a>
             </Link>
           </li>
