@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { Header } from "src/components/Header";
-import { Post } from "src/components/Post";
+import { User } from "src/components/User";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,13 +8,13 @@ const Container = styled.div`
   padding: 0 0.5rem;
 `;
 
-const PostsId: NextPage = () => {
+const UsersId: NextPage = () => {
   return (
     <Container>
       <Header />
-      <Post />
+      <User />
     </Container>
   );
 };
 
-export default PostsId;
+export default UsersId;

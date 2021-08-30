@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import { Header } from "src/components/Header";
-import { Post } from "src/components/Post";
+import { Comments as CommentsComponent } from "src/components/Comments";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,13 +9,16 @@ const Container = styled.div`
   padding: 0 0.5rem;
 `;
 
-const PostsId: NextPage = () => {
+const Comments: NextPage = () => {
   return (
     <Container>
+      <Head>
+        <title>Comments Page</title>
+      </Head>
       <Header />
-      <Post />
+      <CommentsComponent />
     </Container>
   );
 };
 
-export default PostsId;
+export default Comments;

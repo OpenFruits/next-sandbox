@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
-import { Posts } from "src/components/Posts";
+import { Posts as PostsComponent } from "src/components/Posts";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -9,16 +9,16 @@ const Container = styled.div`
   padding: 0 0.5rem;
 `;
 
-const PostsIndex: NextPage = () => {
+const Posts: NextPage = () => {
   return (
     <Container>
       <Head>
         <title>Posts Page</title>
       </Head>
       <Header />
-      <Posts />
+      <PostsComponent />
     </Container>
   );
 };
 
-export default PostsIndex;
+export default Posts;
