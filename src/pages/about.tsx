@@ -16,7 +16,6 @@ const Container = styled.div`
 `;
 
 const About: NextPage<PageProps> = (props) => {
-  console.log(props);
   const {
     count,
     isShow,
