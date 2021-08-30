@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { sp } from "../../styles/media";
+import { sp } from "../styles/media";
 import styled from "styled-components";
 
 const ITEMS = [
