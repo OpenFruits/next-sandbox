@@ -2,6 +2,7 @@ import { VFC } from "react";
 import Head from "next/head";
 import { useUser } from "src/hooks/useUser";
 import styled from "styled-components";
+import { PostsByUserId } from "./PostsByUserId";
 
 const Article = styled.div`
   minheight: 100vh;
@@ -26,6 +27,7 @@ export const User: VFC = () => {
       </Head>
       <Article>
         <h1>{data.name}</h1>
+        <h2>詳細</h2>
         <ul>
           <li>{data.username}</li>
           <li>{data.address.city}</li>
@@ -33,6 +35,8 @@ export const User: VFC = () => {
           <li>{data.website}</li>
           <li>{data.company.name}</li>
         </ul>
+        <h2>投稿</h2>
+        <PostsByUserId userId={data.id} />
       </Article>
     </div>
   );

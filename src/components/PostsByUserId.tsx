@@ -1,9 +1,13 @@
 import { VFC } from "react";
-import { usePosts } from "src/hooks/useFetchArray";
+import { usePostsByUserId } from "src/hooks/useFetchArray";
 import Link from "next/link";
 
-export const Posts: VFC = () => {
-  const { data, error, isLoading, isEmpty } = usePosts();
+type Props = {
+  userId: number;
+};
+
+export const PostsByUserId: VFC<Props> = (props) => {
+  const { data, error, isLoading, isEmpty } = usePostsByUserId(props.userId);
 
   if (isLoading) return <div>ローディング中</div>;
 

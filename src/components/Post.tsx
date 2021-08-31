@@ -1,7 +1,10 @@
 import { VFC } from "react";
 import Head from "next/head";
-import { usePost } from "src/hooks/usePost";
+import { UserByUserId } from "./UserByUserId";
+import { CommentsByPostId } from "./CommentsByPostId";
 import styled from "styled-components";
+import { usePost } from "src/hooks/usePost";
+import { useRouter } from "next/router";
 
 const Article = styled.div`
   minheight: 100vh;
@@ -13,7 +16,8 @@ const Article = styled.div`
 `;
 
 export const Post: VFC = () => {
-  const { user, post, error, isLoading } = usePost();
+  const router = useRouter();
+  const { data: post, isLoading, error } = usePost(Number(router.query.id));
 
   if (isLoading) return <div>ローディング中</div>;
 
@@ -27,7 +31,8 @@ export const Post: VFC = () => {
       <Article>
         <h1>{post?.title}</h1>
         <p>{post?.body}</p>
-        {user?.name ? <div>Created by {user.name}</div> : null}
+        <UserByUserId userId={post?.userId} />
+        <CommentsByPostId postId={post?.id} />
       </Article>
     </div>
   );

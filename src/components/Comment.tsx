@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { useComment } from "src/hooks/useComment";
 import styled from "styled-components";
+import { PostByPostId } from "./PostByPostId";
 
 const Article = styled.div`
   minheight: 100vh;
@@ -25,6 +26,8 @@ export const Comment: VFC = () => {
         <li>{data.name}</li>
         <li>{data.email}</li>
       </ul>
+      <h2>元記事</h2>
+      <PostByPostId postId={data.postId} />
     </Article>
   );
 };
