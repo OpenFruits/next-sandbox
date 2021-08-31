@@ -16,6 +16,7 @@ const Anchor = styled.a`
   display: inline-block;
   padding: 8px 24px;
   font-size: 1.2rem;
+  cursor: pointer;
   &:hover,
   &:focus,
   &:active {
