@@ -18,6 +18,10 @@ export const usePosts = () => {
   return useFetchArray(`${API_URL}/posts`);
 };
 
+export const usePostsByUserId = (userId: number) => {
+  return useFetchArray(`${API_URL}/posts?userId=${userId}`);
+};
+
 export const useUsers = () => {
   return useFetchArray(`${API_URL}/users`);
 };
@@ -28,8 +32,4 @@ export const useComments = () => {
 
 export const useCommentsByPostId = (id: number) => {
   return useFetchArray(`${API_URL}/comments?postId=${id}`);
-};
-
-export const usePostsByUserId = (userId: number) => {
-  return useFetchArray(`${API_URL}/posts?userId=${userId}`);
 };
