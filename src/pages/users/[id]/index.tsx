@@ -11,14 +11,20 @@ const Container = styled.div`
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.query;
-  const API_URL = `https://jsonplaceholder.typicode.com/users/${id}`;
-  const user = await fetch(API_URL);
+  // ユーザー情報の取得
+  const USER_API_URL = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const user = await fetch(USER_API_URL);
   const userData = await user.json();
+  // ユーザーの投稿の取得
+  const POST_API_URL = `https://jsonplaceholder.typicode.com/posts?userId=${userData.id}`;
+  const posts = await fetch(POST_API_URL);
+  const postsData = await posts.json();
 
   return {
     props: {
       fallback: {
-        [API_URL]: userData,
+        [USER_API_URL]: userData,
+        [POST_API_URL]: postsData,
       },
     },
   };

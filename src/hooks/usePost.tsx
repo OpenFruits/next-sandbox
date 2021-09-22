@@ -1,7 +1,7 @@
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 
 export const usePost = (postId: number) => {
-  const { data, error } = useSWR(
+  const { data, error } = useSWRImmutable(
     postId ? `https://jsonplaceholder.typicode.com/posts/${postId}` : null
   );
 
