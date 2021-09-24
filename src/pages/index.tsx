@@ -33,7 +33,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const ChildComponent: VFC = () => {
   const { data, error } = useSWR(API);
-  console.log({ data, error });
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
