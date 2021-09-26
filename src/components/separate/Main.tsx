@@ -3,8 +3,13 @@ import { Headline } from "src/components/separate/Headline";
 import { Links } from "src/components/separate/Links";
 import styled from "styled-components";
 
-type Props = {
-  page: string;
+export const Main: VFC<{ page: string }> = ({ page }) => {
+  return (
+    <Container>
+      <Headline page={page} />
+      <Links />
+    </Container>
+  );
 };
 
 const Container = styled.main`
@@ -15,12 +20,3 @@ const Container = styled.main`
   justify-content: center;
   align-items: center;
 `;
-
-export const Main: VFC<Props> = (props) => {
-  return (
-    <Container>
-      <Headline page={props.page} />
-      <Links />
-    </Container>
-  );
-};

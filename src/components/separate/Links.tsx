@@ -26,6 +26,19 @@ const ITEMS = [
   },
 ];
 
+export const Links: VFC = () => {
+  return (
+    <Grid>
+      {ITEMS.map((item) => (
+        <Card key={item.href} href={item.href}>
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+        </Card>
+      ))}
+    </Grid>
+  );
+};
+
 const Grid = styled.div`
   display: flex;
   align-items: center;
@@ -67,16 +80,3 @@ const Card = styled.a`
     line-height: 1.5;
   }
 `;
-
-export const Links: VFC = () => {
-  return (
-    <Grid>
-      {ITEMS.map((item) => (
-        <Card key={item.href} href={item.href}>
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-        </Card>
-      ))}
-    </Grid>
-  );
-};

@@ -39,7 +39,9 @@ const ChildComponent: VFC<{ isSG: boolean }> = ({ isSG }) => {
   return <h2>CSRでPostsの数を取得→「{data.length}」</h2>;
 };
 
-const Play: NextPage<PageProps> = (props) => {
+const Play: NextPage<PageProps & any> = (props) => {
+  const { fallback } = props;
+
   return (
     <Container>
       <Head>
@@ -52,7 +54,7 @@ const Play: NextPage<PageProps> = (props) => {
       <br />
 
       <ChildComponent isSG={false} />
-      <SWRConfig value={{ fallback: props.fallback }}>
+      <SWRConfig value={{ fallback }}>
         <ChildComponent isSG />
       </SWRConfig>
 
