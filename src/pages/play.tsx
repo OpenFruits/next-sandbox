@@ -32,11 +32,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const ChildComponent: VFC<{ isSG: boolean }> = ({ isSG }) => {
   const { data, error } = useSWR(`${API_URL}/posts`);
 
-  if (isSG) return <h3>SGでPostsの数を取得→「{data.length}」</h3>;
+  if (isSG) return <h2>SGでPostsの数を取得→「{data.length}」</h2>;
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
-  return <h3>CSRでPostsの数を取得→「{data.length}」</h3>;
+  return <h2>CSRでPostsの数を取得→「{data.length}」</h2>;
 };
 
 const Play: NextPage<PageProps> = (props) => {
@@ -49,14 +49,15 @@ const Play: NextPage<PageProps> = (props) => {
       <Header />
 
       <Headline page="play" />
+      <br />
 
       <ChildComponent isSG={false} />
       <SWRConfig value={{ fallback: props.fallback }}>
         <ChildComponent isSG />
       </SWRConfig>
 
-      {props.isShow && <h1>{props.count}</h1>}
-      {props.isShow && <h1>{props.doubleCount}</h1>}
+      {props.isShow && <h2>{`Count：${props.count}`}</h2>}
+      {props.isShow && <h2>{`DoubleCount：${props.doubleCount}`}</h2>}
       {props.isShow && <button onClick={props.handleClick}>Count Up</button>}
       <button onClick={props.handleDisplay}>
         {props.isShow ? "Hide Counter" : "Show Counter"}
