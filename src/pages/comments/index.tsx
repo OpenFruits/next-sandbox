@@ -2,9 +2,10 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
 import { Comments as CommentsComponent } from "src/components/Comments";
-import styled from "styled-components";
 import { API_URL } from "src/utils/const";
 import { SWRConfig } from "swr";
+import { Container } from "src/styles/Container";
+import { H3 } from "src/styles/H3";
 
 export const getStaticProps: GetStaticProps = async () => {
   const COMMENTS_API_URL = `${API_URL}/comments`;
@@ -38,14 +39,3 @@ const Comments: NextPage<any> = (props) => {
 };
 
 export default Comments;
-
-const Container = styled.div`
-  min-height: 100vh;
-  width: 600px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-`;
-
-const H3 = styled.h3`
-  padding: 1rem 0;
-`;

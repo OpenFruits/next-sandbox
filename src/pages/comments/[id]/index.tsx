@@ -1,9 +1,10 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Header } from "src/components/Header";
 import { Comment } from "src/components/Comment";
-import styled from "styled-components";
 import { API_URL } from "src/utils/const";
 import { SWRConfig } from "swr";
+import { Container } from "src/styles/Container";
+import { H3 } from "src/styles/H3";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const comments = await fetch(`${API_URL}/comments?_limit=10`);
@@ -13,6 +14,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       id: comment.id.toString(),
     },
   }));
+
   return { paths, fallback: "blocking" };
 };
 
@@ -21,11 +23,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const COMMENT_API_URL = `${API_URL}/comments/${id}`;
   const comment = await fetch(COMMENT_API_URL);
 
-  if (!comment.ok) {
-    return {
-      notFound: true,
-    };
-  }
+  if (!comment.ok) return { notFound: true };
 
   const commentData = await comment.json();
 
@@ -57,14 +55,3 @@ const CommentsId: NextPage = (props: any) => {
 };
 
 export default CommentsId;
-
-const Container = styled.div`
-  min-height: 100vh;
-  width: 600px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-`;
-
-const H3 = styled.h3`
-  padding: 1rem 0;
-`;

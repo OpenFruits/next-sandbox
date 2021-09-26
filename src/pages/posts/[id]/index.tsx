@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import { Header } from "src/components/Header";
 import { Post } from "src/components/Post";
-import styled from "styled-components";
+import { Container } from "src/styles/Container";
+import { H3 } from "src/styles/H3";
 
 const PostsId: NextPage = () => {
   return (
@@ -14,14 +15,3 @@ const PostsId: NextPage = () => {
 };
 
 export default PostsId;
-
-const Container = styled.div`
-  min-height: 100vh;
-  width: 600px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-`;
-
-const H3 = styled.h3`
-  padding: 1rem 0;
-`;

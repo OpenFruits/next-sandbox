@@ -1,8 +1,9 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { Header } from "src/components/Header";
 import { User } from "src/components/User";
+import { Container } from "src/styles/Container";
+import { H3 } from "src/styles/H3";
 import { API_URL } from "src/utils/const";
-import styled from "styled-components";
 import { SWRConfig } from "swr";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -41,14 +42,3 @@ const UsersId: NextPage = (props: any) => {
 };
 
 export default UsersId;
-
-const Container = styled.div`
-  min-height: 100vh;
-  width: 600px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-`;
-
-const H3 = styled.h3`
-  padding: 1rem 0;
-`;
