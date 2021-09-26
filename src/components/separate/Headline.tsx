@@ -21,7 +21,7 @@ const Description = styled.p`
 export const Headline: VFC<Props> = (props) => {
   return (
     <div>
-      <Title>NEXT.JS SANDBOX</Title>
+      <Title>Next.js SANDBOX</Title>
 
       <Description>
         {`${props.page} Page`}
