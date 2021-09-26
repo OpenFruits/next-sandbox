@@ -2,7 +2,7 @@ import { VFC } from "react";
 import Head from "next/head";
 import { useUser } from "src/hooks/fetch/useUser";
 import styled from "styled-components";
-import { PostsByUserId } from "./PostsByUserId";
+import { PostsByUserId } from "src/components/Posts/PostsByUserId";
 
 const Article = styled.div`
   minheight: 100vh;

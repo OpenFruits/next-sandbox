@@ -1,7 +1,7 @@
 import { VFC } from "react";
 import Head from "next/head";
-import { UserByUserId } from "./UserByUserId";
-import { CommentsByPostId } from "./CommentsByPostId";
+import { UserByUserId } from "src/components/User/UserByUserId";
+import { CommentsByPostId } from "src/components/Comments/CommentsByPostId";
 import styled from "styled-components";
 import { usePost } from "src/hooks/fetch/usePost";
 import { useRouter } from "next/router";

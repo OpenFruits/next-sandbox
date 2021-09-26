@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
 import styled from "styled-components";
-import { PageProps } from "src/types/page";
-import { Main } from "src/components/Main";
+import { PageProps } from "src/@types/page";
+import { Main } from "src/components/separate/Main";
 
 const Container = styled.div`
   min-height: 100vh;

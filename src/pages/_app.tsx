@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { useCounter } from "src/hooks/useCounter";
-import { useBgColor } from "src/hooks/useBgColor";
+import { useCounter } from "src/hooks/play/useCounter";
+import { useBgColor } from "src/hooks/play/useBgColor";
 import { SWRConfig } from "swr";
 import "src/styles/globals.css";
 

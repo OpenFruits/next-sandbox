@@ -1,7 +1,7 @@
 import { VFC } from "react";
 import { useComment } from "src/hooks/fetch/useComment";
 import styled from "styled-components";
-import { PostByPostId } from "./PostByPostId";
+import { PostByPostId } from "src/components/Post/PostByPostId";
 
 const Article = styled.div`
   minheight: 100vh;
