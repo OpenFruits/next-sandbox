@@ -15,26 +15,26 @@ export const Post: VFC = () => {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <div>
+    <>
       <Head>
         <title>{data?.title}</title>
       </Head>
-      <Article>
-        <h1>{data?.title}</h1>
-        <p>{data?.body}</p>
-        <UserByUserId userId={data?.userId} />
-        <p>Comments</p>
-        <CommentsByPostId postId={data?.id} />
-      </Article>
-    </div>
+      <PostTitle>{data?.title}</PostTitle>
+      <PostBody>{data?.body}</PostBody>
+      <UserByUserId userId={data?.userId} />
+      <br />
+      <h3>Comments</h3>
+      <br />
+      <CommentsByPostId postId={data?.id} />
+    </>
   );
 };
 
-const Article = styled.div`
-  minheight: 100vh;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
+const PostTitle = styled.h1`
+  padding: 0.5rem 0;
+`;
+
+const PostBody = styled.p`
+  padding: 0.2rem 0 0.5rem;
+  font-size: 1.5rem;
 `;

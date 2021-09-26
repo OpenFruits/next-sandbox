@@ -5,15 +5,6 @@ import styled from "styled-components";
 import { PageProps } from "src/@types/page";
 import { Main } from "src/components/separate/Main";
 
-const Container = styled.div`
-  min-height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Home: NextPage<PageProps> = () => {
   return (
     <Container>
@@ -28,3 +19,12 @@ const Home: NextPage<PageProps> = () => {
 };
 
 export default Home;
+
+const Container = styled.div`
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

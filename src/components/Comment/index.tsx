@@ -3,15 +3,6 @@ import { useComment } from "src/hooks/fetch/useComment";
 import styled from "styled-components";
 import { PostByPostId } from "src/components/Post/PostByPostId";
 
-const Article = styled.div`
-  minheight: 100vh;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-`;
-
 export const Comment: VFC = () => {
   const { data, error, isLoading } = useComment();
 
@@ -20,14 +11,20 @@ export const Comment: VFC = () => {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <Article>
-      <h1>{data.body}</h1>
-      <ul>
-        <li>{data.name}</li>
-        <li>{data.email}</li>
-      </ul>
-      <h2>元記事</h2>
+    <>
+      <p>{`${data.name}（${data.email}）`}</p>
+      <CommentBody>{data.body}</CommentBody>
+      <H3>元記事</H3>
       <PostByPostId postId={data.postId} />
-    </Article>
+    </>
   );
 };
+
+const CommentBody = styled.h1`
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+`;
+
+const H3 = styled.h3`
+  padding: 1rem 0;
+`;

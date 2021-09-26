@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { usePosts } from "src/hooks/fetch/useFetchArray";
 import Link from "next/link";
+import styled from "styled-components";
 
 export const Posts: VFC = () => {
   const { data, error, isLoading, isEmpty } = usePosts();
@@ -12,16 +13,21 @@ export const Posts: VFC = () => {
   if (isEmpty) return <div>データが空です</div>;
 
   return (
-    <div>
-      <ol>
-        {data?.map((post: any) => (
-          <li key={post.id}>
-            <Link href={`/posts/${post.id}`}>
-              <a>{post.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ol>
-    </div>
+    <ol>
+      {data?.map((post: any) => (
+        <List key={post.id}>
+          <Link href={`/posts/${post.id}`}>
+            <a>{post.title}</a>
+          </Link>
+        </List>
+      ))}
+    </ol>
   );
 };
+
+const List = styled.li`
+  margin: 0.4rem 0;
+  &:hover {
+    color: gray;
+  }
+`;

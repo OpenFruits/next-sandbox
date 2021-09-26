@@ -44,6 +44,11 @@ const CommentsId: NextPage = (props: any) => {
   return (
     <Container>
       <Header />
+      <H3>
+        SSGによるデータ取得：
+        <br />
+        ビルド時に10件静的生成→11件目以降はマウスホバー時にSG化
+      </H3>
       <SWRConfig value={{ fallback }}>
         <Comment />
       </SWRConfig>
@@ -55,5 +60,11 @@ export default CommentsId;
 
 const Container = styled.div`
   min-height: 100vh;
+  width: 600px;
+  margin: 0 auto;
   padding: 0 0.5rem;
+`;
+
+const H3 = styled.h3`
+  padding: 1rem 0;
 `;
