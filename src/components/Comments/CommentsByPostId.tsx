@@ -9,11 +9,11 @@ type Props = {
 export const CommentsByPostId: VFC<Props> = (props) => {
   const { data, error, isLoading, isEmpty } = useCommentsByPostId(props.postId);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>コメント：ローディング中</div>;
 
   if (error) return <div>{error.message}</div>;
 
-  if (isEmpty) return <div>No Comments found.</div>;
+  if (isEmpty) return <div>コメントが見つかりません</div>;
 
   return (
     <div>

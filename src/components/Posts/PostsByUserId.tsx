@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { usePostsByUserId } from "src/hooks/fetch/useFetchArray";
 import Link from "next/link";
+import styled from "styled-components";
 
 type Props = {
   userId: number;
@@ -16,14 +17,24 @@ export const PostsByUserId: VFC<Props> = (props) => {
   if (isEmpty) return <div>データが空です</div>;
 
   return (
-    <ol>
+    <ul style={{ listStyle: "none", padding: 0 }}>
       {data?.map((post: any) => (
         <li key={post.id} style={{ padding: "0.5rem 0" }}>
-          <Link href={`/posts/${post.id}`}>
-            <a>{post.title}</a>
+          <Link href={`/posts/${post.id}`} passHref>
+            <Anchor>
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+            </Anchor>
           </Link>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 };
+
+const Anchor = styled.a`
+  margin: 0.5rem 0;
+  &:hover {
+    color: gray;
+  }
+`;
