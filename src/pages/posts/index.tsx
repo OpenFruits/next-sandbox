@@ -1,9 +1,8 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
 import { Posts as PostsComponent } from "src/components/Posts";
 import styled from "styled-components";
-import { SWRConfig } from "swr";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -12,32 +11,28 @@ const Container = styled.div`
   padding: 0 0.5rem;
 `;
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const POSTS_API_URL = `https://jsonplaceholder.typicode.com/posts`;
-  const posts = await fetch(POSTS_API_URL);
-  const postsData = await posts.json();
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const POSTS_API_URL = `https://jsonplaceholder.typicode.com/posts`;
+//   const posts = await fetch(POSTS_API_URL);
+//   const postsData = await posts.json();
 
-  return {
-    props: {
-      fallback: {
-        [POSTS_API_URL]: postsData,
-      },
-    },
-  };
-};
+//   return {
+//     props: {
+//       fallback: {
+//         [POSTS_API_URL]: postsData,
+//       },
+//     },
+//   };
+// };
 
-const Posts: NextPage<any> = (props) => {
-  const { fallback } = props;
-
+const Posts: NextPage = () => {
   return (
     <Container>
       <Head>
         <title>Posts Page</title>
       </Head>
-      <SWRConfig value={{ fallback }}>
-        <Header />
-        <PostsComponent />
-      </SWRConfig>
+      <Header />
+      <PostsComponent />
     </Container>
   );
 };

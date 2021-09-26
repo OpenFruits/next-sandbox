@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { useCommentsByPostId } from "src/hooks/useFetchArray";
+import { useCommentsByPostId } from "src/hooks/fetch/useFetchArray";
 
 type Props = {
   postId: number;

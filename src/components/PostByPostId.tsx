@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { usePost } from "src/hooks/usePost";
+import { usePost } from "src/hooks/fetch/usePost";
 
 type Props = {
   postId: number;

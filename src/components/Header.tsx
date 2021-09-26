@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
 import { VFC } from "react";
 import Link from "next/link";
 import styled from "styled-components";
@@ -25,20 +24,27 @@ const Anchor = styled.a`
   }
 `;
 
+const PageIcon = styled.p`
+  text-align: center;
+`;
+
 const NAV_ITEMS = [
-  { href: "/", label: "Index" },
-  { href: "/about", label: "About" },
-  { href: "/posts", label: "Posts" },
-  { href: "/users", label: "Users" },
-  { href: "/comments", label: "Comments" },
+  { href: "/", icon: "📝", label: "Index" },
+  { href: "/posts", icon: "💌", label: "Posts" },
+  { href: "/users", icon: "👨🏻‍💻", label: "Users" },
+  { href: "/comments", icon: "💬", label: "Comments" },
+  { href: "/play", icon: "🎮", label: "Play" },
 ];
 
 export const Header: VFC = () => {
   return (
     <HeaderComponent>
       {NAV_ITEMS.map((item) => (
-        <Link key={item.href} href={item.href}>
-          <Anchor>{item.label}</Anchor>
+        <Link key={item.href} href={item.href} passHref>
+          <Anchor>
+            <PageIcon>{item.icon}</PageIcon>
+            {item.label}
+          </Anchor>
         </Link>
       ))}
     </HeaderComponent>

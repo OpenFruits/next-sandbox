@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import Head from "next/head";
-import { useUser } from "src/hooks/useUser";
+import { useUser } from "src/hooks/fetch/useUser";
 import styled from "styled-components";
 import { PostsByUserId } from "./PostsByUserId";
 
@@ -26,16 +26,18 @@ export const User: VFC = () => {
         <title>{data.name}</title>
       </Head>
       <Article>
+        <br />
         <h1>{data.name}</h1>
-        <h2>詳細</h2>
+        <br />
+        <h3>詳細</h3>
         <ul>
-          <li>{data.username}</li>
-          <li>{data.address.city}</li>
-          <li>{data.phone}</li>
-          <li>{data.website}</li>
-          <li>{data.company.name}</li>
+          <li>{`名前：${data.username}`}</li>
+          <li>{`住所：${data.address.city}`}</li>
+          <li>{`電話番号：${data.phone}`}</li>
+          <li>{`Webサイト：${data.website}`}</li>
+          <li>{`学校：${data.company.name}`}</li>
         </ul>
-        <h2>投稿</h2>
+        <h3>投稿</h3>
         <PostsByUserId userId={data.id} />
       </Article>
     </div>

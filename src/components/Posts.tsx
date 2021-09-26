@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { usePosts } from "src/hooks/useFetchArray";
+import { usePosts } from "src/hooks/fetch/useFetchArray";
 import Link from "next/link";
 
 export const Posts: VFC = () => {

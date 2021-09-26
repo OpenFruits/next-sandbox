@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { usePostsByUserId } from "src/hooks/useFetchArray";
+import { usePostsByUserId } from "src/hooks/fetch/useFetchArray";
 import Link from "next/link";
 
 type Props = {
@@ -16,16 +16,14 @@ export const PostsByUserId: VFC<Props> = (props) => {
   if (isEmpty) return <div>データが空です</div>;
 
   return (
-    <div>
-      <ol>
-        {data?.map((post: any) => (
-          <li key={post.id}>
-            <Link href={`/posts/${post.id}`}>
-              <a>{post.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ol>
-    </div>
+    <ol>
+      {data?.map((post: any) => (
+        <li key={post.id} style={{ padding: "0.5rem 0" }}>
+          <Link href={`/posts/${post.id}`}>
+            <a>{post.title}</a>
+          </Link>
+        </li>
+      ))}
+    </ol>
   );
 };

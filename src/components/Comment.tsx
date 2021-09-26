@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { useComment } from "src/hooks/useComment";
+import { useComment } from "src/hooks/fetch/useComment";
 import styled from "styled-components";
 import { PostByPostId } from "./PostByPostId";
 

@@ -32,7 +32,6 @@ const Grid = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
-  margin-top: 3rem;
   ${sp`
       width: 20px;
       height: 20px;

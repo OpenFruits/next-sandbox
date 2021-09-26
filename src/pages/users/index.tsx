@@ -34,8 +34,8 @@ const Users: NextPage = (props: any) => {
       <Head>
         <title>Users Page</title>
       </Head>
+      <Header />
       <SWRConfig value={{ fallback }}>
-        <Header />
         <UsersComponent />
       </SWRConfig>
     </Container>

@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { Headine } from "src/components/Headline";
+import { Headline } from "src/components/Headline";
 import { Links } from "src/components/Links";
 import styled from "styled-components";
 
@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Container = styled.main`
-  padding: 5rem 0;
+  padding: 1rem 0 4rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ const Container = styled.main`
 export const Main: VFC<Props> = (props) => {
   return (
     <Container>
-      <Headine page={props.page} />
+      <Headline page={props.page} />
       <Links />
     </Container>
   );

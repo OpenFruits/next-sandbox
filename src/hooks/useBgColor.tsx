@@ -5,18 +5,21 @@ export const useBgColor = () => {
   const router = useRouter();
 
   const bgColor = useMemo(() => {
-    switch (router.pathname) {
-      case "/": {
-        return "lightblue";
-      }
-      case "/about": {
-        return "beige";
-      }
-      case "/posts": {
+    switch (true) {
+      case /^\/post/.test(router.pathname): {
         return "mistyrose";
       }
+      case /^\/users/.test(router.pathname): {
+        return "lightblue";
+      }
+      case /^\/comments/.test(router.pathname): {
+        return "beige";
+      }
+      case /^\/play/.test(router.pathname): {
+        return "thistle";
+      }
       default: {
-        return "";
+        return "lightgray";
       }
     }
   }, [router.pathname]);
