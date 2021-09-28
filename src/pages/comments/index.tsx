@@ -30,7 +30,11 @@ const Comments: NextPage<any> = (props) => {
         <title>Comments Page</title>
       </Head>
       <Header />
-      <H3>SSGによるデータ取得：ビルド時に静的生成（更新不可）</H3>
+      <H3>
+        「SSG」+「fallback:blocking」+「Linkのprefetch:false」：
+        <br />
+        ビルド時に10件SG→11件目以降はマウスホバー時にSG化
+      </H3>
       <SWRConfig value={{ fallback }}>
         <CommentsComponent />
       </SWRConfig>
