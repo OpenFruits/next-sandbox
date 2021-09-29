@@ -2,6 +2,29 @@ import { VFC } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
+const NAV_ITEMS = [
+  { href: "/", icon: "📝", label: "Index" },
+  { href: "/posts", icon: "💌", label: "Posts" },
+  { href: "/users", icon: "👨🏻‍💻", label: "Users" },
+  { href: "/comments", icon: "💬", label: "Comments" },
+  { href: "/play", icon: "🎮", label: "Play" },
+];
+
+export const Header: VFC = () => {
+  return (
+    <HeaderComponent>
+      {NAV_ITEMS.map((item) => (
+        <Link key={item.href} href={item.href} passHref>
+          <Anchor>
+            <PageIcon>{item.icon}</PageIcon>
+            {item.label}
+          </Anchor>
+        </Link>
+      ))}
+    </HeaderComponent>
+  );
+};
+
 const HeaderComponent = styled.header`
   width: 100%;
   height: 100px;
@@ -27,26 +50,3 @@ const Anchor = styled.a`
 const PageIcon = styled.p`
   text-align: center;
 `;
-
-const NAV_ITEMS = [
-  { href: "/", icon: "📝", label: "Index" },
-  { href: "/posts", icon: "💌", label: "Posts" },
-  { href: "/users", icon: "👨🏻‍💻", label: "Users" },
-  { href: "/comments", icon: "💬", label: "Comments" },
-  { href: "/play", icon: "🎮", label: "Play" },
-];
-
-export const Header: VFC = () => {
-  return (
-    <HeaderComponent>
-      {NAV_ITEMS.map((item) => (
-        <Link key={item.href} href={item.href} passHref>
-          <Anchor>
-            <PageIcon>{item.icon}</PageIcon>
-            {item.label}
-          </Anchor>
-        </Link>
-      ))}
-    </HeaderComponent>
-  );
-};

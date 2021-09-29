@@ -1,7 +1,7 @@
 import { VFC } from "react";
 import { usePosts } from "src/hooks/fetch/useFetchArray";
 import Link from "next/link";
-import styled from "styled-components";
+import { List } from "src/styles/List";
 
 export const Posts: VFC = () => {
   const { data, error, isLoading, isEmpty } = usePosts();
@@ -24,10 +24,3 @@ export const Posts: VFC = () => {
     </ol>
   );
 };
-
-const List = styled.li`
-  margin: 0.4rem 0;
-  &:hover {
-    color: gray;
-  }
-`;

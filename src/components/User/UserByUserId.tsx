@@ -12,11 +12,12 @@ export const UserByUserId: VFC<{ userId: number }> = ({ userId }) => {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <Link href={`/users/${userId}`}>
-      <a>
-        <WriterName>Created by {data.name}</WriterName>
-      </a>
-    </Link>
+    <WriterName>
+      Created by{" "}
+      <Link href={`/users/${userId}`} passHref>
+        <Anchor>{data.name}</Anchor>
+      </Link>
+    </WriterName>
   );
 };
 
@@ -24,4 +25,10 @@ const WriterName = styled.span`
   display: block;
   font-weight: bold;
   font-size: 1.5rem;
+`;
+
+const Anchor = styled.a`
+  &:hover {
+    color: gray;
+  }
 `;

@@ -1,14 +1,10 @@
 import { VFC } from "react";
 import { usePostsByUserId } from "src/hooks/fetch/useFetchArray";
 import Link from "next/link";
-import styled from "styled-components";
+import { List } from "src/styles/List";
 
-type Props = {
-  userId: number;
-};
-
-export const PostsByUserId: VFC<Props> = (props) => {
-  const { data, error, isLoading, isEmpty } = usePostsByUserId(props.userId);
+export const PostsByUserId: VFC<{ userId: number }> = ({ userId }) => {
+  const { data, error, isLoading, isEmpty } = usePostsByUserId(userId);
 
   if (isLoading) return <div>ローディング中</div>;
 
@@ -19,22 +15,15 @@ export const PostsByUserId: VFC<Props> = (props) => {
   return (
     <ul style={{ listStyle: "none", padding: 0 }}>
       {data?.map((post: any) => (
-        <li key={post.id} style={{ padding: "0.5rem 0" }}>
+        <List key={post.id}>
           <Link href={`/posts/${post.id}`} passHref>
-            <Anchor>
+            <a>
               <h3>{post.title}</h3>
               <p>{post.body}</p>
-            </Anchor>
+            </a>
           </Link>
-        </li>
+        </List>
       ))}
     </ul>
   );
 };
-
-const Anchor = styled.a`
-  margin: 0.5rem 0;
-  &:hover {
-    color: gray;
-  }
-`;
