@@ -7,10 +7,24 @@ import { SWRConfig } from "swr";
 import { Container } from "src/styles/Container";
 import { H3 } from "src/styles/H3";
 
-export const getStaticProps: GetStaticProps = async () => {
+type Comment = {
+  id: number;
+  name: string;
+  body: string;
+  email: string;
+  postId: number;
+};
+
+type Props = {
+  fallback: {
+    [key: string]: Comment;
+  };
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const COMMENTS_API_URL = `${API_URL}/comments`;
   const comments = await fetch(COMMENTS_API_URL);
-  const commentsData = await comments.json();
+  const commentsData: Comment = await comments.json();
 
   return {
     props: {
@@ -21,7 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Comments: NextPage<any> = (props) => {
+const Comments: NextPage<Props> = (props) => {
   const { fallback } = props;
 
   return (
