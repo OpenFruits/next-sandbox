@@ -1,12 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
-
-export type Counter = {
-  count: number;
-  doubleCount: number;
-  isShow: boolean;
-  handleClick: () => void;
-  handleDisplay: () => void;
-};
+import { Counter } from "src/utils/types";
 
 export const useCounter = (): Counter => {
   const [count, setCount] = useState(1);

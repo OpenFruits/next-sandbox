@@ -2,22 +2,14 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
 import styled from "styled-components";
-import { PageProps } from "src/@types/page";
 import { Headline } from "src/components/separate/Headline";
 import React, { VFC } from "react";
 import { API_URL } from "src/utils/const";
 import useSWR, { SWRConfig } from "swr";
+import { Post, Props } from "src/utils/types";
+import { useCounter } from "src/hooks/play/useCounter";
 
-const Container = styled.div`
-  min-height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props<Post[]>> = async () => {
   const res = await fetch(`${API_URL}/posts`);
   const data = await res.json();
   return {
@@ -39,7 +31,8 @@ const ChildComponent: VFC<{ isSG: boolean }> = ({ isSG }) => {
   return <h2>CSRでPostsの数を取得→「{data.length}」</h2>;
 };
 
-const Play: NextPage<PageProps & any> = (props) => {
+const Play: NextPage<Props<Post[]>> = (props) => {
+  const counter = useCounter();
   const { fallback } = props;
 
   return (
@@ -51,21 +44,31 @@ const Play: NextPage<PageProps & any> = (props) => {
       <Header />
 
       <Headline page="play" />
-      <br />
 
       <ChildComponent isSG={false} />
       <SWRConfig value={{ fallback }}>
         <ChildComponent isSG />
       </SWRConfig>
 
-      {props.isShow && <h2>{`Count：${props.count}`}</h2>}
-      {props.isShow && <h2>{`DoubleCount：${props.doubleCount}`}</h2>}
-      {props.isShow && <button onClick={props.handleClick}>Count Up</button>}
-      <button onClick={props.handleDisplay}>
-        {props.isShow ? "Hide Counter" : "Show Counter"}
+      {counter.isShow && <h2>{`Count：${counter.count}`}</h2>}
+      {counter.isShow && <h2>{`DoubleCount：${counter.doubleCount}`}</h2>}
+      {counter.isShow && (
+        <button onClick={counter.handleClick}>Count Up</button>
+      )}
+      <button onClick={counter.handleDisplay}>
+        {counter.isShow ? "Hide Counter" : "Show Counter"}
       </button>
     </Container>
   );
 };
 
 export default Play;
+
+const Container = styled.div`
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

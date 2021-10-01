@@ -6,25 +6,12 @@ import { API_URL } from "src/utils/const";
 import { SWRConfig } from "swr";
 import { Container } from "src/styles/Container";
 import { H3 } from "src/styles/H3";
+import { Comment, Props } from "src/utils/types";
 
-type Comment = {
-  id: number;
-  name: string;
-  body: string;
-  email: string;
-  postId: number;
-};
-
-type Props = {
-  fallback: {
-    [key: string]: Comment;
-  };
-};
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props<Comment[]>> = async () => {
   const COMMENTS_API_URL = `${API_URL}/comments`;
   const comments = await fetch(COMMENTS_API_URL);
-  const commentsData: Comment = await comments.json();
+  const commentsData: Comment[] = await comments.json();
 
   return {
     props: {
@@ -35,7 +22,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
-const Comments: NextPage<Props> = (props) => {
+const Comments: NextPage<Props<Comment[]>> = (props) => {
   const { fallback } = props;
 
   return (
