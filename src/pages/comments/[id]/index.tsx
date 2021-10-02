@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const comment = await fetch(COMMENT_API_URL);
 
   // 存在しないcommentページにリクエストされたら404ページを表示する
-  if (!comment.ok) return { notFound: true };
+  if (!comment.ok) return { notFound: true, revalidate: 10 };
 
   const commentData = await comment.json();
 
@@ -38,6 +38,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         [COMMENT_API_URL]: commentData,
       },
     },
+    revalidate: 10,
   };
 };
 
@@ -54,9 +55,13 @@ const CommentsId: NextPage = (props: any) => {
     <Container>
       <Header />
       <H3>
-        「SSG」+「fallback:blocking」+「Linkのprefetch:false」：
+        ・「SSG + fallback:blocking + Linkのprefetch:false」
         <br />
-        ビルド時に10件SG→11件目以降はマウスホバー時にSG化
+        ・ビルド時に10件SG → 以降はマウスホバー時にSG化
+        <br />
+        ・ISRにより10秒後ごとにキャッシュ更新を許可
+        <br />
+        ・SWRによりリクエストのたびにfetchされる
       </H3>
       <SWRConfig value={{ fallback }}>
         <Comment />

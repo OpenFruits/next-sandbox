@@ -19,6 +19,7 @@ export const getStaticProps: GetStaticProps<Props<Comment[]>> = async () => {
         [COMMENTS_API_URL]: commentsData,
       },
     },
+    revalidate: 10,
   };
 };
 
@@ -32,9 +33,13 @@ const Comments: NextPage<Props<Comment[]>> = (props) => {
       </Head>
       <Header />
       <H3>
-        「SSG」+「fallback:blocking」+「Linkのprefetch:false」：
+        ・「SSG + fallback:blocking + Linkのprefetch:false」
         <br />
-        ビルド時に10件SG→11件目以降はマウスホバー時にSG化
+        ・ビルド時に10件SG → 以降はマウスホバー時にSG化
+        <br />
+        ・ISRにより10秒後ごとにキャッシュ更新を許可
+        <br />
+        ・SWRImmutableによりfetchは行われない
       </H3>
       <SWRConfig value={{ fallback }}>
         <CommentsComponent />
